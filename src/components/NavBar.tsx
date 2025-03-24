@@ -4,14 +4,24 @@
 
 function Navbar () {
   return (
-    <nav className="bg-yellow-600 text-white p-4">
-      <div className="mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Backery Delicious</h1>
-        <div className="flex items-center space-x-4">
-          
-        </div>
+    <nav className="flex flex-row py-4">
+      <div className="mx-auto flex items-center">
+        <a href="/" className="text-[35px] font-bold no-underline">
+          Padaria Delicias
+        </a>
       </div>
-    </nav>
+      <div className="flex items-center">
+          <a href="/" className="no-underline">
+            Home
+          </a>
+          <a href="/menu" className="ml-4 no-underline">
+            Menu
+          </a>
+          <a href="/orders" className="ml-4 no-underline">
+            Orders
+          </a>
+      </div>
+      </nav>
   );
 };
 

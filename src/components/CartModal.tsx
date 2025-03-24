@@ -6,21 +6,6 @@ interface Product {
   price: number;
 }
 
-
-interface CartModalProps {
-  cartItems: Product[];
-  total: number;
-  paymentMethod: string;
-  setPaymentMethod: (method: string) => void;
-  isDelivery: boolean;
-  setIsDelivery: (delivery: boolean) => void;
-  deliveryAddress: string;
-  setDeliveryAddress: (address: string) => void;
-  removeFromCart: (all: Product) => void;
-  checkout: () => void;
-  setShowCart: (show: boolean) => void;
-}
-
 export default function CartModal() {
     const [cartItems, setCartItems] = useState<Product[]>([]);
     const [showCart, setShowCart] = useState<boolean>(false);
@@ -34,6 +19,7 @@ export default function CartModal() {
       }
       alert('Compra finalizada com sucesso!');
       setCartItems([]);
+      setTotal(total + 1);
       setShowCart(false);
     };
     const handleClickRemoveFromCart = (product: Product) => {

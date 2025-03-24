@@ -1,13 +1,12 @@
-import './index.css';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router';
-import Navigation from './pages/routes/routes';
+import { BrowserRouter } from 'react-router-dom'
+import Navigation from './pages/routes/routes'
 
-const rootElement = document.getElementById('root');
-
-ReactDOM.createRoot(rootElement).render(
+function App() {
+  return (
     <BrowserRouter>
       <Navigation />
     </BrowserRouter>
-  );
+  )
+}
 
+export default App
