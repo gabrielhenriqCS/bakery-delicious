@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { CartItem } from '../types/bakery';
+import { BagItem } from '../types/bakery';
 
-export const useCart = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+export const useBag = () => {
+  const [bagItems, setBagItems] = useState<BagItem[]>([]);
   
-  const addToCart = (product: CartItem) => {
-    setCartItems(prev => {
+  const addToBag = (product: BagItem) => {
+    setBagItems(prev => {
       const existingItem = prev.find(item => item.id === product.id);
       if (existingItem) {
         return prev.map(item =>
@@ -18,36 +18,36 @@ export const useCart = () => {
     });
   };
 
-  const removeFromCart = (productId: string) => {
-    setCartItems(prev => prev.filter(item => item.id !== productId));
+  const removeFromBag = (productId: string) => {
+    setBagItems(prev => prev.filter(item => item.id !== productId));
   };
 
   const updateQuantity = (productId: string, quantity: number) => {
     if (quantity <= 0) {
-      removeFromCart(productId);
+      removeFromBag(productId);
       return;
     }
-    setCartItems(prev =>
+    setBagItems(prev =>
       prev.map(item =>
         item.id === productId ? { ...item, quantity } : item
       )
     );
   };
 
-  const clearCart = () => setCartItems([]);
+  const clearCart = () => setBagItems([]);
 
-  const total = cartItems.reduce(
+  const total = bagItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
 
   return {
-    cartItems,
-    addToCart,
-    removeFromCart,
+    bagItems,
+    addToBag,
+    removeFromBag,
     updateQuantity,
     clearCart,
     total,
-    count: cartItems.reduce((sum, item) => sum + item.quantity, 0)
+    count: bagItems.reduce((sum, item) => sum + item.quantity, 0)
   };
 };

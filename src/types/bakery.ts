@@ -8,7 +8,7 @@ export interface Product {
     menuCategoryId: string;
   }
   
-  export interface CartItem extends Product {
+  export interface BagItem extends Product {
     quantity: number;
   }
   

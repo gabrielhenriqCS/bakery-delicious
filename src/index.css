@@ -1,14 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
+@import "tailwindcss";
 
 body {
-    background: url('https://images.pexels.com/photos/1739748/pexels-photo-1739748.jpeg?auto=compress&cs=tinysrgb&w=600https://images.pexels.com/photos/1995010/pexels-photo-1995010.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover no-repeat;
+  background:
+    url('src/assets/background-bakery.jpg')
+    center/cover
+    no-repeat fixed;
   background-blend-mode: overlay;
-  background-color: rgba(0, 0, 0, 0.3);
-  font-family: 'Winky Sans', sans-serif;
+  background-color: rgba(0, 0, 0, 0.2);
 }
