@@ -1,8 +1,8 @@
-import { Product } from '../types/bakery';
+import { Product } from '@prisma/client';
 
 
 export const fetchProducts = async (): Promise<Product[]> => {
-  const response = await fetch(`/products`);
+  const response = await fetch(`/produtos`);
   if (!response.ok) {
     throw new Error('Failed to fetch products');
   }
@@ -10,7 +10,7 @@ export const fetchProducts = async (): Promise<Product[]> => {
 };
 
 export const fetchProductById = async (id: string): Promise<Product> => {
-  const response = await fetch(`/products/${id}`);
+  const response = await fetch(`/produtos/${id}`);
   if (!response.ok) {
     throw new Error('Failed to fetch product');
   }

@@ -13,9 +13,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Backery {
+model Bakery {
   id        String      @id @default(uuid())
   name      String
+  slug      String      @unique
   description String
   avatarImageUrl String
   menuCategory MenuCategory[]
@@ -28,8 +29,8 @@ model Backery {
 model MenuCategory {
   id        String      @id @default(uuid())
   name      String
-  backery  Backery    @relation(fields: [backeryId], references: [id], onDelete: Cascade)
-  backeryId String
+  bakery  Bakery    @relation(fields: [bakeryId], references: [id], onDelete: Cascade)
+  bakeryId String
   products Product[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -43,8 +44,8 @@ model Product {
   imageUrl  String
   ingredients String[]
   orderProducts OrderProduct[]
-  backery  Backery    @relation(fields: [backeryId], references: [id], onDelete: Cascade)
-  backeryId String
+  bakery  Bakery    @relation(fields: [bakeryId], references: [id], onDelete: Cascade)
+  bakeryId String
   menuCategory MenuCategory @relation(fields: [menuCategoryId], references: [id])
   menuCategoryId String
   createdAt DateTime @default(now())
@@ -56,8 +57,8 @@ model Order {
   total     Float
   status    OrderStatus
   consumptionMethod ConsumptionMethod
-  backery  Backery    @relation(fields: [backeryId], references: [id], onDelete: Cascade)
-  backeryId String
+  bakery  Bakery    @relation(fields: [bakeryId], references: [id], onDelete: Cascade)
+  bakeryId String
   orderProducts OrderProduct[]
   customerName String
   customerPhone String
