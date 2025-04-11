@@ -4,7 +4,7 @@ import bagIcon from "../assets/bagicon.png";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
-const [bag, setBag] = useState("");
+const [bag, setBag] = useState(0);
 
 useEffect(() => {
   let prevScrollpos = window.pageYOffset;
@@ -68,11 +68,11 @@ useEffect(() => {
           alt="Sacola de Compras"
           className="h-10 w-10 cursor-pointer object-contain md:h-10 md:w-10"
         />
-        {bag.length === 0 ? (
+        {bag === 0 ? (
           ""
         ) : (
           <span className="absolute top-2 right-2 rounded-full bg-red-500 px-2 text-xs font-bold text-white">
-            {bag.length}
+            {bag}
           </span>
         )}
       </div>

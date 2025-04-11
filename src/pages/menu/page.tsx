@@ -7,12 +7,12 @@ interface BakeryMenuProps {
     searchParams: Promise<{ consumptionMethod: string}>;
 }
 
-const isComsumptionMethod = (consumptionMethod: string) => ["DELIVERY", "TAKEAWAY"].includes(consumptionMethod);
+const isConsumptionMethod = (consumptionMethod: string) => ["DELIVERY", "TAKEAWAY"].includes(consumptionMethod);
 
 const BakeryMenuPage = async ({ params, searchParams }: BakeryMenuProps) => {
     const { slug } = await params;
     const { consumptionMethod } = await searchParams;
-    if(!isComsumptionMethod(consumptionMethod)) {
+    if(!isConsumptionMethod(consumptionMethod)) {
         throw new Error("Método inválido");
     }
     const bakery = await db.bakery.findUnique({
